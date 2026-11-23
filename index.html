@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Автоцентр «Гефест» — макет сайта</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&family=Manrope:ital,wght@0,800;1,800&display=swap" rel="stylesheet">
+<style>
+body{margin:0} html{scroll-behavior:smooth} *{box-sizing:border-box}
+a{color:#1B2A6B} a:hover{color:#0F1A4A}
+.card .sub{color:#4A5068}
+.card[aria-pressed="true"]{background:#1B2A6B!important;color:#fff!important;border-color:#1B2A6B!important;box-shadow:inset 0 -4px 0 #FFD21F}
+.card[aria-pressed="true"] .sub{color:#D5DAF0}
+@media (max-width:640px){
+ h1{font-size:34px!important} h2{font-size:30px!important}
+ section > div, section{padding-left:16px!important;padding-right:16px!important}
+ [style*="flex: 1 1 520px"],[style*="flex: 1 1 480px"],[style*="flex: 1 1 460px"],[style*="flex: 1 1 420px"],[style*="flex: 1 1 380px"]{flex-basis:100%!important}
+ [style*="minmax(300px"]{grid-template-columns:1fr!important}
+}
+</style>
+</head>
+<body>
+<div style="width: 100%; min-height: 100%; background: #F5F6F9; color: #14182B; font-family: 'Golos Text', system-ui, sans-serif">
+
+<!-- Шапка -->
+<header style="background: #FFFFFF; border-bottom: 1px solid #E1E4EC">
+<div style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" style="text-decoration: none; color: #14182B; display: flex; flex-direction: column; line-height: 1.1">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.12em; color: #5A6078">АВТОЦЕНТР</span>
+<span style="font-family: Manrope, sans-serif; font-size: 26px; font-weight: 800; font-style: italic; color: #1B2A6B">«ГЕФЕСТ»</span>
+</a>
+<nav aria-label="Разделы сайта" style="display: flex; flex-wrap: wrap; gap: 6px 24px; font-size: 16px; font-weight: 500">
+<a href="#napravleniya" style="text-decoration: none">Направления</a>
+<a href="#uslugi" style="text-decoration: none">Услуги</a>
+<a href="#kak-nayti" style="text-decoration: none">Как нас найти</a>
+<a href="#zayavka" style="text-decoration: none">Заявка</a>
+</nav>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+<a href="tel:+79216353614" style="font-size: 18px; font-weight: 700; text-decoration: none; color: #14182B">+7 (921) 635-36-14</a>
+<a href="https://wa.me/79216353614" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 10px; background: #FFD21F; color: #14182B; font-weight: 700; text-decoration: none">Написать в WhatsApp</a>
+</div>
+</div>
+</header>
+
+<!-- Первый экран -->
+<section id="top" style="background: #1B2A6B; color: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 80px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+<div style="flex: 1 1 520px; display: flex; flex-direction: column; gap: 24px">
+<span style="font-size: 16px; font-weight: 600; color: #FFD21F">ул. Фучика, 21, корп. 2 · магазин № 13</span>
+<h1 style="margin: 0; font-family: Manrope, sans-serif; font-weight: 800; font-size: 52px; line-height: 1.08; letter-spacing: -0.01em">Автоаксессуары и&nbsp;допоборудование для&nbsp;иномарок</h1>
+<p style="margin: 0; font-size: 20px; line-height: 1.5; color: #D5DAF0; max-width: 600px">Багажники, фаркопы, защита картера, пневмоподвеска, шумоизоляция. Подберём по VIN, привезём под заказ и установим.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="tel:+79216353614" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 12px; background: #FFD21F; color: #14182B; font-size: 18px; font-weight: 700; text-decoration: none">Позвонить</a>
+<a href="https://wa.me/79216353614" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 12px; border: 2px solid #FFFFFF; color: #FFFFFF; font-size: 18px; font-weight: 700; text-decoration: none">WhatsApp</a>
+<a href="https://t.me/+79216353614" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 26px; border-radius: 12px; border: 2px solid #FFFFFF; color: #FFFFFF; font-size: 18px; font-weight: 700; text-decoration: none">Telegram</a>
+</div>
+</div>
+<div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 16px">
+<div style="aspect-ratio: 4 / 3; border-radius: 16px; border: 2px dashed #6F7BB8; display: flex; align-items: center; justify-content: center; color: #B9C1E6; font-size: 18px; font-weight: 600; text-align: center; padding: 24px">[Фото магазина — вход с улицы]</div>
+<div style="background: #FFD21F; color: #14182B; border-radius: 14px; padding: 18px 22px; display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: Manrope, sans-serif; font-size: 20px; font-weight: 800">Мы работаем!</span>
+<span style="font-size: 16px; line-height: 1.45">Слухи о закрытии — неправда. Магазин № 13 на месте и работает в обычном режиме.</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Направления -->
+<section id="napravleniya" style="max-width: 1200px; margin: 0 auto; padding: 88px 24px 40px; box-sizing: border-box; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-family: Manrope, sans-serif; font-size: 40px; font-weight: 800">Что у нас есть</h2>
+<p style="margin: 0; font-size: 18px; color: #4A5068">Нажмите на направление, чтобы посмотреть подробнее.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px">
+<button type="button" class="card" data-id="bagazhniki" aria-pressed="false" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; min-height: 104px; padding: 20px; border-radius: 14px; cursor: pointer; font-family: inherit; box-sizing: border-box; border: 2px solid #E1E4EC; background: #FFFFFF; color: #14182B">
+<span style="font-family: Manrope, sans-serif; font-size: 20px; font-weight: 800">Багажники</span>
+<span class="sub" style="font-size: 15px; line-height: 1.4">Поперечины, боксы, крепления</span>
+</button>
+<button type="button" class="card" data-id="farkopy" aria-pressed="false" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; min-height: 104px; padding: 20px; border-radius: 14px; cursor: pointer; font-family: inherit; box-sizing: border-box; border: 2px solid #E1E4EC; background: #FFFFFF; color: #14182B">
+<span style="font-family: Manrope, sans-serif; font-size: 20px; font-weight: 800">Фаркопы</span>
+<span class="sub" style="font-size: 15px; line-height: 1.4">Съёмные и несъёмные, с электрикой</span>
+</button>
+<button type="button" class="card" data-id="zashita" aria-pressed="false" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; min-height: 104px; padding: 20px; border-radius: 14px; cursor: pointer; font-family: inherit; box-sizing: border-box; border: 2px solid #E1E4EC; background: #FFFFFF; color: #14182B">
+<span style="font-family: Manrope, sans-serif; font-size: 20px; font-weight: 800">Защита картера</span>
+<span class="sub" style="font-size: 15px; line-height: 1.4">Разные производители</span>
+</button>
+<button type="button" class="card" data-id="pnevmo" aria-pressed="false" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; min-height: 104px; padding: 20px; border-radius: 14px; cursor: pointer; font-family: inherit; box-sizing: border-box; border: 2px solid #E1E4EC; background: #FFFFFF; color: #14182B">
+<span style="font-family: Manrope, sans-serif; font-size: 20px; font-weight: 800">Пневмоподвеска</span>
+<span class="sub" style="font-size: 15px; line-height: 1.4">Пневмобаллоны в пружину</span>
+</button>
+<button type="button" class="card" data-id="shumka" aria-pressed="false" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; min-height: 104px; padding: 20px; border-radius: 14px; cursor: pointer; font-family: inherit; box-sizing: border-box; border: 2px solid #E1E4EC; background: #FFFFFF; color: #14182B">
+<span style="font-family: Manrope, sans-serif; font-size: 20px; font-weight: 800">Шумоизоляция</span>
+<span class="sub" style="font-size: 15px; line-height: 1.4">Тише в салоне</span>
+</button>
+<button type="button" class="card" data-id="navesnoe" aria-pressed="false" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; min-height: 104px; padding: 20px; border-radius: 14px; cursor: pointer; font-family: inherit; box-sizing: border-box; border: 2px solid #E1E4EC; background: #FFFFFF; color: #14182B">
+<span style="font-family: Manrope, sans-serif; font-size: 20px; font-weight: 800">Навесное оборудование</span>
+<span class="sub" style="font-size: 15px; line-height: 1.4">Под вашу задачу</span>
+</button>
+<button type="button" class="card" data-id="elektrika" aria-pressed="false" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; min-height: 104px; padding: 20px; border-radius: 14px; cursor: pointer; font-family: inherit; box-sizing: border-box; border: 2px solid #E1E4EC; background: #FFFFFF; color: #14182B">
+<span style="font-family: Manrope, sans-serif; font-size: 20px; font-weight: 800">Электрика</span>
+<span class="sub" style="font-size: 15px; line-height: 1.4">Разъёмы, провода, расходники</span>
+</button>
+<button type="button" class="card" data-id="lokery" aria-pressed="false" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; min-height: 104px; padding: 20px; border-radius: 14px; cursor: pointer; font-family: inherit; box-sizing: border-box; border: 2px solid #E1E4EC; background: #FFFFFF; color: #14182B">
+<span style="font-family: Manrope, sans-serif; font-size: 20px; font-weight: 800">Локеры и ветровики</span>
+<span class="sub" style="font-size: 15px; line-height: 1.4">Защита арок и окон</span>
+</button>
+<button type="button" class="card" data-id="lampy" aria-pressed="false" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; min-height: 104px; padding: 20px; border-radius: 14px; cursor: pointer; font-family: inherit; box-sizing: border-box; border: 2px solid #E1E4EC; background: #FFFFFF; color: #14182B">
+<span style="font-family: Manrope, sans-serif; font-size: 20px; font-weight: 800">Автолампы и коврики</span>
+<span class="sub" style="font-size: 15px; line-height: 1.4">Свет и салон</span>
+</button>
+<button type="button" class="card" data-id="bryzgoviki" aria-pressed="false" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; min-height: 104px; padding: 20px; border-radius: 14px; cursor: pointer; font-family: inherit; box-sizing: border-box; border: 2px solid #E1E4EC; background: #FFFFFF; color: #14182B">
+<span style="font-family: Manrope, sans-serif; font-size: 20px; font-weight: 800">Брызговики</span>
+<span class="sub" style="font-size: 15px; line-height: 1.4">Под модель</span>
+</button>
+<button type="button" class="card" data-id="instrument" aria-pressed="false" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px; text-align: left; min-height: 104px; padding: 20px; border-radius: 14px; cursor: pointer; font-family: inherit; box-sizing: border-box; border: 2px solid #E1E4EC; background: #FFFFFF; color: #14182B">
+<span style="font-family: Manrope, sans-serif; font-size: 20px; font-weight: 800">Инструмент</span>
+<span class="sub" style="font-size: 15px; line-height: 1.4">Для машины и гаража</span>
+</button>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E1E4EC; border-radius: 18px; padding: 32px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start">
+<div style="flex: 1 1 460px; display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 14px; font-weight: 700; letter-spacing: 0.08em; color: #5A6078">ВЫ ВЫБРАЛИ</span>
+<h3 style="margin: 0; font-family: Manrope, sans-serif; font-size: 32px; font-weight: 800; color: #1B2A6B"><span id="cur-title"></span></h3>
+<p style="margin: 0; font-size: 18px; line-height: 1.55"><span id="cur-desc"></span></p>
+<ul style="margin: 0; padding-left: 20px; font-size: 17px; line-height: 1.7; color: #2C3148">
+<li>Подбор по марке, модели или VIN</li>
+<li>Под заказ, если нужной позиции нет в наличии</li>
+<li>Установка на месте</li>
+</ul>
+</div>
+<div style="flex: 0 1 320px; background: #F5F6F9; border-radius: 14px; padding: 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+<span style="font-size: 15px; color: #4A5068">Цена</span>
+<span style="font-family: Manrope, sans-serif; font-size: 28px; font-weight: 800"><span id="cur-price"></span></span>
+<span style="font-size: 15px; line-height: 1.45; color: #4A5068">Точную стоимость назовём после подбора под вашу машину.</span>
+<a href="https://wa.me/79216353614" style="display: inline-flex; align-items: center; justify-content: center; min-height: 52px; border-radius: 12px; background: #1B2A6B; color: #FFFFFF; font-size: 17px; font-weight: 700; text-decoration: none">Узнать цену в WhatsApp</a>
+<a href="tel:+79216353614" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 12px; border: 2px solid #1B2A6B; color: #1B2A6B; font-size: 17px; font-weight: 700; text-decoration: none">Позвонить</a>
+</div>
+</div>
+</section>
+
+<!-- Услуги -->
+<section id="uslugi" style="max-width: 1200px; margin: 0 auto; padding: 64px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+<h2 style="margin: 0; font-family: Manrope, sans-serif; font-size: 40px; font-weight: 800">Не только продаём</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 18px; border-top: 3px solid #1B2A6B">
+<span style="font-family: Manrope, sans-serif; font-size: 18px; font-weight: 800; color: #1B2A6B">01</span>
+<span style="font-size: 21px; font-weight: 700">Подбор по VIN</span>
+<span style="font-size: 16px; line-height: 1.5; color: #4A5068">Скажите марку и модель или пришлите VIN, подберём то, что точно встанет.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 18px; border-top: 3px solid #1B2A6B">
+<span style="font-family: Manrope, sans-serif; font-size: 18px; font-weight: 800; color: #1B2A6B">02</span>
+<span style="font-size: 21px; font-weight: 700">Заказ под клиента</span>
+<span style="font-size: 16px; line-height: 1.5; color: #4A5068">Нет в наличии — закажем у поставщика.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 18px; border-top: 3px solid #1B2A6B">
+<span style="font-family: Manrope, sans-serif; font-size: 18px; font-weight: 800; color: #1B2A6B">03</span>
+<span style="font-size: 21px; font-weight: 700">Доставка</span>
+<span style="font-size: 16px; line-height: 1.5; color: #4A5068">[Условия доставки — уточнить]</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 18px; border-top: 3px solid #1B2A6B">
+<span style="font-family: Manrope, sans-serif; font-size: 18px; font-weight: 800; color: #1B2A6B">04</span>
+<span style="font-size: 21px; font-weight: 700">Установка</span>
+<span style="font-size: 16px; line-height: 1.5; color: #4A5068">Купили у нас — установим у нас.</span>
+</div>
+</div>
+</section>
+
+<!-- Наши работы -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 64px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px">
+<h2 style="margin: 0; font-family: Manrope, sans-serif; font-size: 40px; font-weight: 800">Наши работы</h2>
+<a href="https://t.me/+79216353614" style="font-size: 17px; font-weight: 600">Больше работ — в Telegram</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px">
+<div style="aspect-ratio: 4 / 3; border-radius: 14px; border: 2px dashed #B5BBCC; display: flex; align-items: center; justify-content: center; color: #5A6078; font-size: 17px; font-weight: 600; text-align: center; padding: 16px">[Фото: установленный фаркоп]</div>
+<div style="aspect-ratio: 4 / 3; border-radius: 14px; border: 2px dashed #B5BBCC; display: flex; align-items: center; justify-content: center; color: #5A6078; font-size: 17px; font-weight: 600; text-align: center; padding: 16px">[Фото: багажник на крыше]</div>
+<div style="aspect-ratio: 4 / 3; border-radius: 14px; border: 2px dashed #B5BBCC; display: flex; align-items: center; justify-content: center; color: #5A6078; font-size: 17px; font-weight: 600; text-align: center; padding: 16px">[Фото: шумоизоляция салона]</div>
+</div>
+</section>
+
+<!-- Как найти -->
+<section id="kak-nayti" style="background: #FFFFFF; border-top: 1px solid #E1E4EC; border-bottom: 1px solid #E1E4EC">
+<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 40px">
+<div style="flex: 1 1 420px; display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-family: Manrope, sans-serif; font-size: 40px; font-weight: 800">Как нас найти</h2>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 15px; color: #5A6078">Адрес</span>
+<span style="font-size: 22px; font-weight: 700">ул. Фучика, 21, корп. 2, магазин № 13</span>
+<span style="font-size: 17px; color: #2C3148">Метро «Бухарестская». Между Софийской и Пражской, рядом с автоцентром «Максимум». [Ориентир у входа — уточнить]</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 15px; color: #5A6078">Часы работы</span>
+<span style="font-size: 20px; font-weight: 600">[Часы работы — перенести из Яндекс Карт]</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 15px; color: #5A6078">Телефоны</span>
+<a href="tel:+79216353614" style="font-size: 20px; font-weight: 700; text-decoration: none">+7 (921) 635-36-14</a>
+<a href="tel:+78129180155" style="font-size: 20px; font-weight: 700; text-decoration: none">+7 (812) 918-01-55</a>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="https://yandex.ru/maps/?text=%D0%90%D0%B2%D1%82%D0%BE%D1%86%D0%B5%D0%BD%D1%82%D1%80%20%D0%93%D0%B5%D1%84%D0%B5%D1%81%D1%82%20%D0%A4%D1%83%D1%87%D0%B8%D0%BA%D0%B0%2021%20%D0%BA2" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 12px; background: #1B2A6B; color: #FFFFFF; font-weight: 700; text-decoration: none">Открыть в Яндекс Картах</a>
+<a href="https://yandex.ru/maps/?text=%D0%90%D0%B2%D1%82%D0%BE%D1%86%D0%B5%D0%BD%D1%82%D1%80%20%D0%93%D0%B5%D1%84%D0%B5%D1%81%D1%82%20%D0%A4%D1%83%D1%87%D0%B8%D0%BA%D0%B0%2021%20%D0%BA2" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 12px; border: 2px solid #1B2A6B; color: #1B2A6B; font-weight: 700; text-decoration: none">Отзывы: 4,3 на Яндекс Картах</a>
+</div>
+</div>
+<div style="flex: 1 1 420px; min-height: 360px; border-radius: 16px; border: 2px dashed #B5BBCC; background: #F5F6F9; display: flex; align-items: center; justify-content: center; color: #5A6078; font-size: 18px; font-weight: 600; text-align: center; padding: 24px">[Карта Яндекса с меткой магазина]</div>
+</div>
+</section>
+
+<!-- Заявка -->
+<section id="zayavka" style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
+<div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-family: Manrope, sans-serif; font-size: 40px; font-weight: 800">Оставьте заявку</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; color: #4A5068">Напишите, какая у вас машина и что нужно. Перезвоним и подскажем по наличию и цене.</p>
+<p style="margin: 0; font-size: 16px; line-height: 1.5; color: #4A5068">Удобнее в мессенджере? Пишите в <a href="https://wa.me/79216353614">WhatsApp</a> или <a href="https://t.me/+79216353614">Telegram</a>.</p>
+</div>
+<form style="flex: 1 1 480px; background: #FFFFFF; border: 1px solid #E1E4EC; border-radius: 18px; padding: 28px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px">
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600">Ваше имя
+<input type="text" name="name" style="min-height: 48px; padding: 0 14px; border: 1px solid #B5BBCC; border-radius: 10px; font-size: 17px; font-family: inherit">
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600">Телефон
+<input type="tel" name="phone" placeholder="+7" style="min-height: 48px; padding: 0 14px; border: 1px solid #B5BBCC; border-radius: 10px; font-size: 17px; font-family: inherit">
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600">Марка и модель автомобиля
+<input type="text" name="car" placeholder="Например, Kia Sportage 2019" style="min-height: 48px; padding: 0 14px; border: 1px solid #B5BBCC; border-radius: 10px; font-size: 17px; font-family: inherit">
+</label>
+<label style="display: flex; flex-direction: column; gap: 6px; font-size: 15px; font-weight: 600">Что нужно
+<textarea name="need" rows="3" style="padding: 12px 14px; border: 1px solid #B5BBCC; border-radius: 10px; font-size: 17px; font-family: inherit; resize: vertical"></textarea>
+</label>
+<button type="button" style="min-height: 52px; border: none; border-radius: 12px; background: #1B2A6B; color: #FFFFFF; font-size: 18px; font-weight: 700; font-family: inherit; cursor: pointer">Отправить заявку</button>
+</form>
+</section>
+
+<!-- Подвал -->
+<footer style="background: #10183F; color: #D5DAF0">
+<div style="max-width: 1200px; margin: 0 auto; padding: 48px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: Manrope, sans-serif; font-size: 22px; font-weight: 800; font-style: italic; color: #FFFFFF">Автоцентр «Гефест»</span>
+<span style="font-size: 16px">Автоаксессуары и допоборудование</span>
+<span style="font-size: 16px">ул. Фучика, 21, корп. 2, магазин № 13</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 16px">
+<a href="tel:+79216353614" style="color: #FFFFFF; text-decoration: none; font-weight: 600">+7 (921) 635-36-14</a>
+<a href="tel:+78129180155" style="color: #FFFFFF; text-decoration: none; font-weight: 600">+7 (812) 918-01-55</a>
+<a href="mailto:avoevodin@bk.ru" style="color: #FFFFFF">avoevodin@bk.ru</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 16px">
+<a href="#" style="color: #FFD21F; font-weight: 700">Наш магазин на Wildberries [ссылка]</a>
+<span>© 2026 Автоцентр «Гефест»</span>
+</div>
+</div>
+</footer>
+
+</div>
+<script>
+var D=[{"id": "bagazhniki", "title": "Багажники", "short": "Поперечины, боксы, крепления", "desc": "Багажники на крышу под вашу машину: поперечины, автобоксы и крепления. Подберём под модель и тип крыши — с рейлингами или без.", "price": "от [цена] ₽"}, {"id": "farkopy", "title": "Фаркопы", "short": "Съёмные и несъёмные, с электрикой", "desc": "Фаркопы для иномарок вместе с электрикой для подключения прицепа. Подбор под модель и установка.", "price": "от [цена] ₽"}, {"id": "zashita", "title": "Защита картера", "short": "Разные производители", "desc": "Защита двигателя и картера от разных производителей — подберём вариант под машину и бюджет.", "price": "от [цена] ₽"}, {"id": "pnevmo", "title": "Пневмоподвеска", "short": "Пневмобаллоны в пружину", "desc": "Пневмобаллоны в пружину как дополнительное оборудование — когда машина часто ездит гружёной. Подберём под авто и нагрузку.", "price": "от [цена] ₽"}, {"id": "shumka", "title": "Шумоизоляция", "short": "Тише в салоне", "desc": "Шумоизоляция салона, чтобы в машине было тише и не было слышно постороннего шума с дороги.", "price": "от [цена] ₽"}, {"id": "navesnoe", "title": "Навесное оборудование", "short": "Под вашу задачу", "desc": "Навесное и дополнительное оборудование для автомобиля. Расскажите задачу — подберём.", "price": "по запросу"}, {"id": "elektrika", "title": "Электрика", "short": "Разъёмы, провода, расходники", "desc": "Разъёмы, провода и расходные материалы для подключения допоборудования.", "price": "по запросу"}, {"id": "lokery", "title": "Локеры и ветровики", "short": "Защита арок и окон", "desc": "Подкрылки-локеры и дефлекторы окон под вашу модель.", "price": "от [цена] ₽"}, {"id": "lampy", "title": "Автолампы и коврики", "short": "Свет и салон", "desc": "Автолампы и коврики для салона и багажника.", "price": "от [цена] ₽"}, {"id": "bryzgoviki", "title": "Брызговики", "short": "Под модель", "desc": "Брызговики под конкретную модель автомобиля.", "price": "от [цена] ₽"}, {"id": "instrument", "title": "Инструмент", "short": "Для машины и гаража", "desc": "Инструмент для обслуживания автомобиля.", "price": "по запросу"}];
+function pick(id){var c=D.find(function(x){return x.id===id})||D[0];
+document.getElementById('cur-title').textContent=c.title;
+document.getElementById('cur-desc').textContent=c.desc;
+document.getElementById('cur-price').textContent=c.price;
+document.querySelectorAll('.card').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.id===c.id?'true':'false')});}
+document.querySelectorAll('.card').forEach(function(b){b.addEventListener('click',function(){pick(b.dataset.id)})});
+pick(D[0].id);
+</script>
+</body></html>
