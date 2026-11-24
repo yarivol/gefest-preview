@@ -19,47 +19,120 @@
   }
 
   // ---------- Появление блоков при прокрутке ----------
+  // Плавно появляются только крупные блоки, и только те, что ниже первого экрана:
+  // то, что видно сразу, не мигает. Отдельные абзацы, теги и подвал не анимируем.
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var revealSel = ".h2, .lead, .card, .service, .gallery a, .detail, .reviews-text, .reviews-widget, " +
-    ".contacts-text, .map, .lead-text, .form, .page-main > *, .page-aside, .tag, .faq details, .footer-col";
-  var revealEls = document.querySelectorAll(revealSel);
-  Array.prototype.forEach.call(revealEls, function (el, i) {
-    el.classList.add("reveal");
-    // карточки и плитки — лесенкой, по 4 в ряд
-    if (el.matches(".card, .service, .gallery a, .tag, .footer-col")) {
-      var siblings = Array.prototype.indexOf.call(el.parentNode.children, el);
-      el.style.setProperty("--d", (siblings % 4) * 0.07 + "s");
-    }
-  });
-  // Показываем всё, что уже выше нижнего края экрана — в том числе блоки,
-  // которые «перелистнули» быстрым свайпом за один кадр.
-  var pending = Array.prototype.slice.call(revealEls);
-  var ticking = false;
-  function revealVisible() {
-    ticking = false;
-    var limit = window.innerHeight - 40;
-    pending = pending.filter(function (el) {
-      if (el.getBoundingClientRect().top < limit) {
-        el.classList.add("is-in");
-        return false;
-      }
-      return true;
+  var revealSel = ".cards, .services, .gallery, .detail, .reviews-text, .reviews-widget, .contacts-text, " +
+    ".map, .lead-text, .form, .steps, .variants, .products, .media, .faq";
+  // только на главной: на страницах каталога всё показывается сразу
+  if (!reduceMotion && "IntersectionObserver" in window && document.querySelector(".hero")) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    Array.prototype.forEach.call(document.querySelectorAll(revealSel), function (el) {
+      if (el.getBoundingClientRect().top < window.innerHeight) return;   // уже на экране
+      el.classList.add("reveal");
+      io.observe(el);
     });
-    if (!pending.length) {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    }
   }
-  function onScroll() {
-    if (!ticking) { ticking = true; requestAnimationFrame(revealVisible); }
+
+  // ---------- Частые вопросы: плавно раскрываются ----------
+  Array.prototype.forEach.call(document.querySelectorAll(".faq details"), function (det) {
+    var summary = det.querySelector("summary");
+    var body = det.querySelector("summary + *");
+    if (!summary || !body || reduceMotion || !body.animate) return;
+    var anim = null;
+    summary.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (anim) anim.cancel();
+      if (!det.open) {
+        det.open = true;
+        var h = body.offsetHeight;
+        anim = body.animate([{ height: "0px", opacity: 0 }, { height: h + "px", opacity: 1 }],
+          { duration: 260, easing: "cubic-bezier(.2,.7,.2,1)" });
+        anim.onfinish = function () { anim = null; };
+      } else {
+        det.classList.add("closing");
+        anim = body.animate([{ height: body.offsetHeight + "px", opacity: 1 }, { height: "0px", opacity: 0 }],
+          { duration: 220, easing: "ease-in" });
+        anim.onfinish = function () { det.open = false; det.classList.remove("closing"); anim = null; };
+      }
+    });
+  });
+
+  // ---------- Просмотр фото на странице ----------
+  var lb = null, lbItems = [], lbIndex = 0, lastFocus = null;
+  function lbBuild() {
+    lb = document.createElement("div");
+    lb.className = "lightbox";
+    lb.setAttribute("role", "dialog");
+    lb.setAttribute("aria-modal", "true");
+    lb.setAttribute("aria-label", "Просмотр фото");
+    lb.innerHTML = '<button type="button" class="lb-close" aria-label="Закрыть">×</button>' +
+      '<button type="button" class="lb-prev" aria-label="Предыдущее фото">‹</button>' +
+      '<figure class="lb-figure"><img alt=""><figcaption></figcaption></figure>' +
+      '<button type="button" class="lb-next" aria-label="Следующее фото">›</button>' +
+      '<span class="lb-count"></span>';
+    document.body.appendChild(lb);
+    lb.addEventListener("click", function (e) {
+      if (e.target === lb || e.target.closest(".lb-close")) lbClose();
+      else if (e.target.closest(".lb-prev")) lbShow(lbIndex - 1);
+      else if (e.target.closest(".lb-next")) lbShow(lbIndex + 1);
+    });
+    var x0 = null;
+    lb.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener("touchend", function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 50) lbShow(lbIndex + (dx < 0 ? 1 : -1));
+      x0 = null;
+    });
   }
-  if (reduceMotion) {
-    pending.forEach(function (el) { el.classList.add("is-in"); });
-  } else {
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    revealVisible();
+  function lbShow(i) {
+    lbIndex = (i + lbItems.length) % lbItems.length;
+    var a = lbItems[lbIndex];
+    var img = lb.querySelector("img");
+    img.classList.remove("in");
+    img.onload = function () { img.classList.add("in"); };
+    img.src = a.getAttribute("href");
+    img.alt = a.getAttribute("data-caption") || (a.querySelector("img") || {}).alt || "";
+    lb.querySelector("figcaption").textContent = a.getAttribute("data-caption") || "";
+    var many = lbItems.length > 1;
+    lb.querySelector(".lb-count").textContent = many ? (lbIndex + 1) + " из " + lbItems.length : "";
+    lb.querySelector(".lb-prev").hidden = !many;
+    lb.querySelector(".lb-next").hidden = !many;
   }
+  function lbOpen(a) {
+    if (!lb) lbBuild();
+    var group = a.getAttribute("data-lightbox");
+    lbItems = Array.prototype.filter.call(document.querySelectorAll("[data-lightbox]"), function (x) {
+      return x.getAttribute("data-lightbox") === group;
+    });
+    lastFocus = a;
+    lbShow(Math.max(0, lbItems.indexOf(a)));
+    lb.classList.add("open");
+    document.documentElement.classList.add("lb-lock");
+    lb.querySelector(".lb-close").focus();
+  }
+  function lbClose() {
+    lb.classList.remove("open");
+    document.documentElement.classList.remove("lb-lock");
+    if (lastFocus) lastFocus.focus();
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("a[data-lightbox]");
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    e.preventDefault();
+    lbOpen(a);
+  });
+  document.addEventListener("keydown", function (e) {
+    if (!lb || !lb.classList.contains("open")) return;
+    if (e.key === "Escape") lbClose();
+    else if (e.key === "ArrowLeft") lbShow(lbIndex - 1);
+    else if (e.key === "ArrowRight") lbShow(lbIndex + 1);
+  });
 
   // ---------- Карточки направлений ----------
   var cards = document.querySelectorAll(".card[data-title]");
