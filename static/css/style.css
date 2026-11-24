@@ -577,3 +577,4 @@ body.has-cookie-bar .cb-fab{bottom:120px}
 .sitemap h2 a{text-decoration:none}
 @media (prefers-reduced-motion:reduce){.cookie-bar{animation:none}.nav,.nav a{transition:none}}
 @media (max-width:640px){.partners-list{flex:1 1 100%}.partner{flex:0 0 calc(50% - 6px)}}
+.partners-title{flex:1 1 100%}.partners-in{gap:16px}
