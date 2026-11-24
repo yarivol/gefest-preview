@@ -21,7 +21,7 @@
 <link rel="preload" href="/gefest-preview/static/fonts/manrope-cyrillic-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/gefest-preview/static/fonts/golos-text-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.className="js";</script>
-<link rel="stylesheet" href="/gefest-preview/static/css/style.css?v=f9583e41">
+<link rel="stylesheet" href="/gefest-preview/static/css/style.css?v=acd02034">
 
 </head>
 <body>
@@ -110,8 +110,11 @@
 </ul>
 <p>6.2. Ответственный за организацию обработки персональных данных: [ФИО ответственного], эл. почта <a href="mailto:avoevodin@bk.ru">avoevodin@bk.ru</a>.</p>
 
-<h2>7. Сторонние сервисы на Сайте</h2>
-<p>7.1. На страницах Сайта встроены карта и отзывы сервиса «Яндекс Карты» (ООО «Яндекс»). При их загрузке сервис может получать технические данные посетителя и использовать собственные файлы cookie по своим правилам. Оператор эти данные не получает и не обрабатывает.</p>
+<h2 id="cookie">7. Файлы cookie и сторонние сервисы</h2>
+<p>7.1. Сам Сайт не устанавливает файлы cookie и не использует сервисы веб-аналитики.</p>
+<p>7.2. На Сайте можно открыть карту и ленту отзывов сервиса «Яндекс Карты» (ООО «Яндекс»). Эти виджеты загружаются с серверов Яндекса и могут устанавливать собственные файлы cookie и получать технические данные посетителя (IP-адрес, сведения о браузере) по правилам Яндекса. Оператор эти данные не получает и не обрабатывает.</p>
+<p>7.3. Виджеты Яндекса не загружаются, пока посетитель не согласится на это: в окне о cookie (кнопка «Принять») или нажав «Показать карту» / «Показать отзывы». При выборе «Без cookie» виджеты не загружаются, остальной Сайт работает полностью.</p>
+<p>7.4. Выбор хранится только в браузере посетителя. Изменить его можно в любой момент по ссылке «Настройки cookie» внизу любой страницы, а удалить cookie — в настройках браузера.</p>
 
 <h2>8. Заключительные положения</h2>
 <p>8.1. Оператор вправе изменять Политику. Новая редакция вступает в силу с момента публикации на Сайте, если в ней не указано иное.</p>
@@ -162,6 +165,7 @@
 <a class="wb" href="#">Наш магазин на Wildberries [ссылка]</a>
 <a href="/gefest-preview/privacy/">Политика обработки персональных данных</a>
 <a href="/gefest-preview/soglasie/">Согласие на обработку данных</a>
+<button type="button" class="linklike" data-cookie-settings>Настройки cookie</button>
 <span>© 2005–2026 Автоцентр «Гефест»</span>
 </div>
 </div>
@@ -172,6 +176,13 @@
 <a class="btn btn-accent" href="https://wa.me/79216353614">WhatsApp</a>
 </div>
 
-<script src="/gefest-preview/static/js/main.js?v=f9583e41" defer></script>
+<div class="cookie-bar" role="dialog" aria-live="polite" aria-label="Cookie" hidden>
+<p>На сайте есть карта и отзывы Яндекса, они используют cookie. Сам сайт cookie не ставит. <a href="/gefest-preview/privacy/#cookie">Подробнее</a></p>
+<div class="cookie-actions">
+<button type="button" class="btn btn-main" data-cookie="all">Принять</button>
+<button type="button" class="btn btn-outline" data-cookie="none">Без cookie</button>
+</div>
+</div>
+<script src="/gefest-preview/static/js/main.js?v=acd02034" defer></script>
 </body>
 </html>

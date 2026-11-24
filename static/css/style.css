@@ -425,3 +425,22 @@ a.service:hover i{transform:translateX(4px)}
 /* ссылки, по которым легко попасть пальцем */
 .more-link{font-size:17px;font-weight:600;display:inline-block;padding:10px 0}
 .kv-v a{display:inline-block;padding:6px 0}
+
+/* ---------- Cookie ---------- */
+.cookie-bar{position:fixed;left:16px;right:16px;bottom:16px;z-index:40;max-width:720px;margin:0 auto;background:#fff;border:1px solid var(--line-2);box-shadow:0 6px 24px rgba(20,24,43,.18);padding:16px 18px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
+.cookie-bar[hidden]{display:none}
+.cookie-bar p{flex:1 1 320px;font-size:15px;line-height:1.45;color:var(--text)}
+.cookie-actions{display:flex;gap:10px;flex-wrap:wrap}
+.cookie-actions .btn{min-height:44px}
+.linklike{background:none;border:0;padding:0;font:inherit;color:#fff;text-decoration:underline;cursor:pointer;text-align:left}
+.embed{display:flex;align-items:center;justify-content:center;background:var(--bg)}
+.embed iframe{width:100%;height:100%;border:0;display:block}
+.embed-ph{display:flex;flex-direction:column;align-items:center;gap:12px;padding:24px;text-align:center;color:var(--text-2);font-size:15px}
+.reviews-widget.embed{height:auto;min-height:260px}
+.reviews-widget.embed:has(iframe){height:640px}
+@media (max-width:640px){
+  .cookie-bar{left:8px;right:8px;bottom:80px;padding:14px}
+  .cookie-actions{width:100%}
+  .cookie-actions .btn{flex:1 1 0}
+  .reviews-widget.embed:has(iframe){height:520px}
+}

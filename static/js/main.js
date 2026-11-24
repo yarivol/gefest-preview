@@ -94,6 +94,38 @@
     });
   });
 
+  // ---------- Cookie: виджеты Яндекса грузятся только после согласия ----------
+  var COOKIE_KEY = "gefest-cookie";  // "all" или "none"
+  function getChoice() { try { return localStorage.getItem(COOKIE_KEY); } catch (e) { return null; } }
+  function setChoice(v) { try { localStorage.setItem(COOKIE_KEY, v); } catch (e) { /* приватный режим */ } }
+  function loadEmbeds() {
+    Array.prototype.forEach.call(document.querySelectorAll(".embed[data-src]"), function (box) {
+      var f = document.createElement("iframe");
+      f.src = box.getAttribute("data-src");
+      f.title = box.getAttribute("data-title") || "";
+      f.loading = "lazy";
+      f.allowFullscreen = true;
+      box.innerHTML = "";
+      box.appendChild(f);
+      box.removeAttribute("data-src");
+    });
+  }
+  var cookieBar = document.querySelector(".cookie-bar");
+  function hideBar() { if (cookieBar) cookieBar.hidden = true; document.body.classList.remove("has-cookie-bar"); }
+  function showBar() { if (cookieBar) { cookieBar.hidden = false; document.body.classList.add("has-cookie-bar"); } }
+  function decide(v) { setChoice(v); hideBar(); if (v === "all") loadEmbeds(); }
+
+  if (getChoice() === "all") loadEmbeds();
+  else if (!getChoice()) showBar();
+
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest("[data-cookie], [data-embed-load], [data-cookie-settings]");
+    if (!t) return;
+    if (t.hasAttribute("data-cookie")) decide(t.getAttribute("data-cookie"));
+    else if (t.hasAttribute("data-embed-load")) decide("all");  // нажал «Показать карту» — это согласие
+    else { try { localStorage.removeItem(COOKIE_KEY); } catch (err) {} showBar(); }
+  });
+
   // ---------- Нижняя панель не мешает заполнять форму ----------
   document.addEventListener("focusin", function (e) {
     if (e.target.matches("input, textarea")) document.body.classList.add("typing");
