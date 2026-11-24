@@ -142,6 +142,7 @@
     if (el) fn(el);
   }
   var wide = window.matchMedia("(min-width: 641px)");
+  var swapTimer = null;
   Array.prototype.forEach.call(cards, function (card) {
     card.addEventListener("click", function (e) {
       // На телефоне карточка — обычная ссылка на страницу направления.
@@ -152,7 +153,8 @@
       });
       var d = card.dataset;
       detail.classList.add("swap");  // текст гаснет, меняется и снова появляется
-      setTimeout(function () {
+      clearTimeout(swapTimer);       // быстрые клики подряд: показываем только последний выбор
+      swapTimer = setTimeout(function () {
         setCur("title", function (el) { el.textContent = d.title; });
         setCur("desc", function (el) { el.textContent = d.desc; });
         setCur("price", function (el) { el.textContent = d.price; });
@@ -160,7 +162,7 @@
         setCur("url", function (el) { el.href = d.url; });
         setCur("wa", function (el) { el.href = d.wa; });
         detail.classList.remove("swap");
-      }, reduceMotion ? 0 : 180);
+      }, reduceMotion ? 0 : 150);
       if (window.innerWidth < 960) {
         detail.scrollIntoView({ behavior: "smooth", block: "start" });
       }

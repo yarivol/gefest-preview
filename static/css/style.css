@@ -692,3 +692,18 @@ a.photo{display:block;cursor:zoom-in}
   .variant.has-img>.variant-img{grid-row:1 / span 2}
   .variant.has-img>.variant-price{grid-column:2}
 }
+
+/* ================= Единые переходы: всё за 0,15 с ================= */
+:root{--t:.15s ease}
+.card,.card .card-sub,.card .card-n,.btn,.tag,.product,.box-card,.partner,.media-main,.media-thumb,a.variant-img,.faq details,.footer a{
+  transition:background-color var(--t),color var(--t),border-color var(--t),box-shadow var(--t),opacity var(--t)}
+/* жёлтая полоска только у выбранной карточки, без «выезда» */
+.card::after{transition:none;transform:scaleX(0)}
+.card:hover::after{transform:scaleX(0)}
+.card.on::after{transform:scaleX(1)}
+.card.on:hover{background:var(--main);color:#fff;border-color:var(--main)}
+/* описание направления гаснет и появляется целиком, а не по кусочкам */
+.detail [data-cur]{transition:none;opacity:1!important}
+.detail>*{transition:opacity var(--t)}
+.detail.swap>*{opacity:0}
+@media (prefers-reduced-motion:reduce){.detail>*{transition:none}}
