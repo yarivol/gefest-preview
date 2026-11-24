@@ -444,3 +444,18 @@ a.service:hover i{transform:translateX(4px)}
   .cookie-actions .btn{flex:1 1 0}
   .reviews-widget.embed:has(iframe){height:520px}
 }
+
+/* ---------- Страницы моделей ---------- */
+.variants{display:flex;flex-direction:column;border-top:1px solid var(--line-2)}
+.variant{display:flex;flex-direction:column;gap:4px;padding:14px 0;border-bottom:1px solid var(--line-2)}
+.variant b{font-size:17px}
+.variant span{font-size:15px;color:var(--text-2);line-height:1.45}
+.variant .variant-price{color:var(--text);font-weight:700}
+.page-main .tags{margin-top:4px}
+
+/* ---------- Страницы моделей ---------- */
+.variants{display:flex;flex-direction:column;border-top:1px solid var(--line-2)}
+.variant{display:flex;flex-direction:column;gap:4px;padding:14px 0;border-bottom:1px solid var(--line-2)}
+.variant b{font-size:17px}
+.variant span{font-size:15px;color:var(--text-2);line-height:1.45}
+.variant .variant-price{color:var(--text);font-weight:700}
