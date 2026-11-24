@@ -138,6 +138,55 @@
     }, 100);
   });
 
+  // ---------- Обратный звонок: кругляш справа внизу (только на компьютере) ----------
+  var cbDialog = document.querySelector(".cb-dialog");
+  var cbButton = document.querySelector(".cb-fab");
+  var DAY_NAMES = ["в понедельник", "во вторник", "в среду", "в четверг", "в пятницу", "в субботу", "в воскресенье"];
+
+  // Ответ после заявки: в рабочее время — «скоро», иначе — когда откроемся (по часам из Яндекс Карт, МСК)
+  function callbackMessage() {
+    var week = [];
+    try { week = JSON.parse(cbDialog.getAttribute("data-hours")) || []; } catch (e) { week = []; }
+    var msk = new Date(Date.now() + (new Date().getTimezoneOffset() + 180) * 60000);
+    var day = (msk.getDay() + 6) % 7, hour = msk.getHours() + msk.getMinutes() / 60;
+    var today = week[day];
+    if (!week.length || (today && hour >= today[0] && hour < today[1])) {
+      return "<b>Заявка отправлена.</b> Перезвоним в ближайшее время.";
+    }
+    for (var i = 0; i < 8; i++) {
+      var d = (day + i) % 7, h = week[d];
+      if (!h || (i === 0 && hour >= h[0])) continue;
+      var when = i === 0 ? "сегодня" : i === 1 ? "завтра" : DAY_NAMES[d];
+      return "<b>Заявка отправлена.</b> Сейчас магазин закрыт, перезвоним " + when + " с " + h[0] + ":00.";
+    }
+    return "<b>Заявка отправлена, перезвоним.</b>";
+  }
+
+  if (cbDialog && cbButton && typeof cbDialog.showModal === "function") {
+    var cbForm = cbDialog.querySelector("form");
+    cbButton.addEventListener("click", function () {
+      var h1 = document.querySelector("h1");
+      cbForm.elements["source"].value = ("Обратный звонок: " + (h1 ? h1.textContent.trim() : document.title)).slice(0, 80);
+      cbDialog.showModal();
+      cbForm.elements["name"].focus();
+    });
+    cbDialog.addEventListener("click", function (e) {
+      if (e.target === cbDialog || e.target.closest("[data-cb-close]")) cbDialog.close();
+    });
+    // Один раз за визит качнуть трубкой через 15 секунд, без бесконечной пульсации
+    var nudged = false;
+    try { nudged = sessionStorage.getItem("gefest-cb-nudge") === "1"; } catch (e) {}
+    if (!nudged && !reduceMotion) {
+      setTimeout(function () {
+        if (cbDialog.open) return;
+        cbButton.classList.add("nudge");
+        try { sessionStorage.setItem("gefest-cb-nudge", "1"); } catch (e) {}
+      }, 15000);
+    }
+  } else if (cbButton) {
+    cbButton.hidden = true;  // очень старый браузер без <dialog>
+  }
+
   // ---------- Форма заявки ----------
   var WA = (document.querySelector('.callbar a[href*="wa.me"]') || {}).href || "https://wa.me/79216353614";
 
@@ -199,7 +248,8 @@
         .then(function (r) {
           if (!r.ok) throw new Error("HTTP " + r.status);
           form.reset();
-          showMsg(box, "ok", "<b>Заявка отправлена, перезвоним.</b>");
+          showMsg(box, "ok", form.hasAttribute("data-callback") ? callbackMessage()
+            : "<b>Заявка отправлена, перезвоним.</b>");
         })
         .catch(function () {
           var text = "Здравствуйте! " + (payload.car ? "Машина: " + payload.car + ". " : "") +

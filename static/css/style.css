@@ -459,3 +459,21 @@ a.service:hover i{transform:translateX(4px)}
 .variant b{font-size:17px}
 .variant span{font-size:15px;color:var(--text-2);line-height:1.45}
 .variant .variant-price{color:var(--text);font-weight:700}
+
+/* ---------- Обратный звонок ---------- */
+.cb-fab{position:fixed;right:24px;bottom:24px;z-index:35;width:60px;height:60px;border-radius:50%;border:0;background:var(--accent);color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 20px rgba(20,24,43,.25);transition:transform .2s ease,background-color .2s ease}
+.cb-fab:hover{background:#F2C400;transform:scale(1.06)}
+.cb-fab:focus-visible{outline:3px solid var(--main);outline-offset:3px}
+.cb-fab[hidden]{display:none}
+.cb-fab.nudge svg{animation:ring 1s ease-in-out 2}
+@keyframes ring{0%,100%{transform:rotate(0)}15%{transform:rotate(-18deg)}30%{transform:rotate(16deg)}45%{transform:rotate(-12deg)}60%{transform:rotate(8deg)}75%{transform:rotate(-4deg)}}
+body.has-cookie-bar .cb-fab{bottom:120px}
+.cb-dialog{border:0;padding:28px;width:min(440px,calc(100% - 32px));background:#fff;color:var(--text);box-shadow:0 20px 60px rgba(20,24,43,.35)}
+.cb-dialog::backdrop{background:rgba(16,24,63,.55)}
+.cb-dialog h2{font-size:26px;margin-bottom:6px}
+.cb-sub{color:var(--text-2);font-size:16px;margin-bottom:16px}
+.cb-dialog .form{border:0;padding:0;flex:none}
+.cb-close{position:absolute;top:10px;right:12px;width:44px;height:44px;border:0;background:none;font-size:30px;line-height:1;color:var(--muted);cursor:pointer}
+.cb-close:hover{color:var(--text)}
+@media (max-width:640px){.cb-fab{display:none}}
+@media (prefers-reduced-motion:reduce){.cb-fab.nudge svg{animation:none}}
