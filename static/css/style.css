@@ -707,3 +707,11 @@ a.photo{display:block;cursor:zoom-in}
 .detail>*{transition:opacity var(--t)}
 .detail.swap>*{opacity:0}
 @media (prefers-reduced-motion:reduce){.detail>*{transition:none}}
+
+/* каталоги с раскрывающимися разделами (прицепы, «Интер») */
+.shop summary{display:flex;align-items:center;gap:10px}
+.shop-n{font-weight:600;font-size:14px;color:var(--muted,#6B7088);background:var(--bg-soft,#F2F3F7);padding:2px 9px;border-radius:999px}
+.shop details>div{padding:0 16px 16px}
+.shop .products{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+.box-text{margin:10px 0 0;font-size:14px;line-height:1.5;color:#2C3148}
+@media (max-width:640px){.shop details>div{padding:0 10px 12px}.shop summary{font-size:16px}.shop .products{grid-template-columns:1fr 1fr;gap:8px}}
