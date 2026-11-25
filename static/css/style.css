@@ -715,3 +715,4 @@ a.photo{display:block;cursor:zoom-in}
 .shop .products{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
 .box-text{margin:10px 0 0;font-size:14px;line-height:1.5;color:#2C3148}
 @media (max-width:640px){.shop details>div{padding:0 10px 12px}.shop summary{font-size:16px}.shop .products{grid-template-columns:1fr 1fr;gap:8px}}
+.box-price{font-family:Manrope,sans-serif;font-size:20px;font-weight:800}
