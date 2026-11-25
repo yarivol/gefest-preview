@@ -542,7 +542,7 @@ body.has-cookie-bar .cb-fab{bottom:120px}
 .partners-title{font-size:20px}
 .partners-list{display:flex;flex-wrap:wrap;gap:12px;flex:1}
 .partner{display:flex;align-items:center;justify-content:center;width:160px;height:64px;padding:10px 16px;border:1px solid var(--line);background:#fff;text-decoration:none;color:var(--text);font-weight:700}
-.partner img{max-width:100%;max-height:40px;object-fit:contain;filter:grayscale(1);opacity:.75;transition:filter .2s ease,opacity .2s ease}
+.partner img{width:auto;height:auto;max-width:100%;max-height:40px;object-fit:contain;filter:grayscale(1);opacity:.75;transition:filter .2s ease,opacity .2s ease}
 .partner:hover{border-color:var(--main);box-shadow:0 0 0 3px rgba(27,42,107,.1)}
 .partner:hover img{filter:none;opacity:1}
 
