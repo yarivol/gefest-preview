@@ -108,7 +108,8 @@
     if (!lb) lbBuild();
     var group = a.getAttribute("data-lightbox");
     lbItems = Array.prototype.filter.call(document.querySelectorAll("[data-lightbox]"), function (x) {
-      return x.getAttribute("data-lightbox") === group;
+      // .is-off — фото, скрытые фильтром на странице «Наши работы»
+      return x.getAttribute("data-lightbox") === group && !x.classList.contains("is-off");
     });
     lastFocus = a;
     lbShow(Math.max(0, lbItems.indexOf(a)));
@@ -133,6 +134,49 @@
     else if (e.key === "ArrowLeft") lbShow(lbIndex - 1);
     else if (e.key === "ArrowRight") lbShow(lbIndex + 1);
   });
+
+  // ---------- Лента работ: кнопки ‹ › на компьютере, на телефоне листается пальцем ----------
+  Array.prototype.forEach.call(document.querySelectorAll(".carousel"), function (car) {
+    var track = car.querySelector(".car-track");
+    var prev = car.querySelector(".car-prev"), next = car.querySelector(".car-next");
+    function step() { return track.clientWidth * 0.9; }
+    function update() {
+      prev.hidden = track.scrollLeft < 5;
+      next.hidden = track.scrollLeft + track.clientWidth > track.scrollWidth - 5;
+    }
+    prev.addEventListener("click", function () { track.scrollBy({ left: -step() }); });
+    next.addEventListener("click", function () { track.scrollBy({ left: step() }); });
+    track.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  });
+
+  // ---------- Страница «Наши работы»: фильтр по разделу (#slug в адресе) ----------
+  var wf = document.querySelector(".works-filter");
+  if (wf) {
+    var wItems = document.querySelectorAll(".works-all a");
+    var setFilter = function (f) {
+      var btns = wf.querySelectorAll("button");
+      var known = Array.prototype.some.call(btns, function (b) { return b.getAttribute("data-f") === f; });
+      if (!known) f = "";
+      Array.prototype.forEach.call(btns, function (b) {
+        var on = b.getAttribute("data-f") === f;
+        b.classList.toggle("on", on);
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+      Array.prototype.forEach.call(wItems, function (a) {
+        a.classList.toggle("is-off", f !== "" && a.getAttribute("data-dir") !== f);
+      });
+    };
+    wf.addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-f]");
+      if (!b) return;
+      var f = b.getAttribute("data-f");
+      setFilter(f);
+      history.replaceState(null, "", f ? "#" + f : location.pathname);
+    });
+    setFilter(decodeURIComponent(location.hash.slice(1)));
+  }
 
   // ---------- Карточки направлений ----------
   var cards = document.querySelectorAll(".card[data-title]");
